@@ -1,7 +1,8 @@
-
+import sys
 
 def decision(n, m, x):
     return n*m-(2 if n == 1 or m == 1 else 4) >= x if n >= 3 or m >= 3 else False
+
 
 def paint(n, m, x):
     if n == 1 or m == 1:
@@ -13,18 +14,11 @@ def paint(n, m, x):
             print(out)
     else:
         out = ['c.','..']
-        # if x<
-
-# ooooo
-# ooooo
-# ooooo
-# ooooo
         for i in range(n):
             print('.'*m)
 
-def main():
-    with open('input.txt') as f:
-        lines = f.readlines()
+
+def logic(lines):
     for line in lines[1:]:
         n,m,x = [int(i) for i in line.split()]
         print('Teszteset #{}:'.format(lines.index(line)))
@@ -32,6 +26,15 @@ def main():
             paint(n,m,x)
         else:
             print('Lehetetlen!')
+
+
+def main():
+    if 2 > len(sys.argv):
+        print("Input file parameter is mandatory!")
+        return
+    with open(sys.argv[1]) as f:
+        lines = f.readlines()
+    logic(lines)
 
 if __name__ == "__main__":
     main()
