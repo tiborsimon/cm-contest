@@ -3,10 +3,10 @@ import sys
 def decision(n, m, x):
     if n == 1 or m == 1:
         return n*m-2 >= x
-    if n in (3, 4) or m in (3,4):
+    if n > 2 and m > 2:
+        if ((x%m)%2) and x > m:
+            return False
         return n*m-4 >= x
-    if n > 4 and m > 4:
-        return n*m-9 >= x
     return False
 
 
@@ -22,25 +22,17 @@ def paint(n, m, x, buffer):
         out = []
         mask = []
         for nn in range(n):
-            if n in (3, 4) or m in (3,4):
-                mask.append([nn in (0,1) and mm in (0,1) for mm in range(m)])
-            else:
-                mask.append([nn in (1,2,3) and mm in (1,2,3) for mm in range(m)])
+            mask.append([nn in (0,1) and mm in (0,1) for mm in range(m)])
             out.append(list('.'*m))
-
-        if n in (3, 4) or m in (3,4):
-            out[0][0] = 'c'
-        else:
-            out[2][2] = 'c'
+        out[0][0] = 'c'
         for i in range(x):
-            print(i)
             j = i
             jumped = False
             while True:
-                mm = -(j%m + 1); print(mm)
-                nn = -(j/m + 1); print(nn)
+                mm = -(j%m + 1)
+                nn = -(j/m + 1)
                 if mask[nn][mm]:
-                    j += 1; print(j)
+                    j += 1
                     jumped = True
                 else:
                     out[nn][mm] = '*'
