@@ -12,7 +12,7 @@ f1:
 	@echo '-------------------------------'
 	@cat input-1.txt
 	@echo ''
-	@python feladat-1/main.py input-1.txt > output-1.txt
+	@python feladat-1/main.py input-1.txt output-1.txt
 	@echo ' O U T P U T'
 	@echo '-------------------------------'
 	@cat output-1.txt
@@ -26,7 +26,7 @@ f2:
 	@echo '-------------------------------'
 	@cat input-2.txt
 	@echo ''
-	@python feladat-2/main.py input-2.txt > output-2.txt
+	@python feladat-2/main.py input-2.txt output-2.txt
 	@echo ' O U T P U T'
 	@echo '-------------------------------'
 	@cat output-2.txt
@@ -40,7 +40,7 @@ f3:
 	@echo '-------------------------------'
 	@cat input-3.txt
 	@echo ''
-	@python feladat-3/main.py input-3.txt > output-3.txt
+	@python feladat-3/main.py input-3.txt output-3.txt
 	@echo ' O U T P U T'
 	@echo '-------------------------------'
 	@cat output-3.txt

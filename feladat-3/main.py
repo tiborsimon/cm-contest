@@ -1,40 +1,69 @@
 import sys
 
 def decision(n, m, x):
-    return n*m-(2 if n == 1 or m == 1 else 4) >= x if n >= 3 or m >= 3 else False
+    if n == 1 or m == 1:
+        return n*m-2 >= x
+    if n in (3, 4) or m in (3,4):
+        return n*m-4 >= x
+    if n > 4 and m > 4:
+        return n*m-9 >= x
+    return False
 
 
-def paint(n, m, x):
+def paint(n, m, x, buffer):
     if n == 1 or m == 1:
         out = 'c.' + '.'*(max(n,m)-2-x) + '*'*x
         if m == 1:
             for c in out:
-                print(c)
+                buffer.append(c)
         else:
-            print(out)
-    else:
-        out = ['c.','..']
-        for i in range(n):
-            print('.'*m)
+            buffer.append(out)
+    elif n in (3, 4) or m in (3,4):
+        out = []
+        mask = []
+        for nn in range(n):
+            mask.append([nn in (0,1) and mm in (0,1) for mm in range(m)])
+            out.append(list('.'*m))
+        out[0][0] = 'c'
+        import pdb; pdb.set_trace()
+        for i in range(x):
+            j = i
+            while True:
+                mm = -(j%m + 1)
+                nn = -(j/n + 1)
+                if mask[nn][mm]:
+                    j += 1
+                else:
+                    out[nn][mm] = '*'
+                    break
+        for line in out:
+            buffer.append(''.join(line))
+    elif n > 4 and m > 4:
+        buffer.append('larger')
 
 
-def logic(lines):
+def logic(lines, buffer):
     for line in lines[1:]:
         n,m,x = [int(i) for i in line.split()]
-        print('Teszteset #{}:'.format(lines.index(line)))
-        if decision(n,m,x):
-            paint(n,m,x)
+        buffer.append('Teszteset #{}:'.format(lines.index(line)))
+        if decision(n, m, x):
+            paint(n, m, x, buffer)
         else:
-            print('Lehetetlen!')
+            buffer.append('Lehetetlen!')
 
 
 def main():
+    buffer = []
     if 2 > len(sys.argv):
         print("Input file parameter is mandatory!")
         return
     with open(sys.argv[1]) as f:
         lines = f.readlines()
-    logic(lines)
+    logic(lines, buffer)
+    import pdb; pdb.set_trace()
+    with open(sys.argv[2], 'w+') as f:
+        for line in buffer:
+            f.write('{}\n'.format(line))
 
 if __name__ == "__main__":
     main()
