@@ -18,28 +18,37 @@ def paint(n, m, x, buffer):
                 buffer.append(c)
         else:
             buffer.append(out)
-    elif n in (3, 4) or m in (3,4):
+    else:
         out = []
         mask = []
         for nn in range(n):
-            mask.append([nn in (0,1) and mm in (0,1) for mm in range(m)])
+            if n in (3, 4) or m in (3,4):
+                mask.append([nn in (0,1) and mm in (0,1) for mm in range(m)])
+            else:
+                mask.append([nn in (1,2,3) and mm in (1,2,3) for mm in range(m)])
             out.append(list('.'*m))
-        out[0][0] = 'c'
-        import pdb; pdb.set_trace()
+
+        if n in (3, 4) or m in (3,4):
+            out[0][0] = 'c'
+        else:
+            out[1][1] = 'c'
         for i in range(x):
+            print(i)
             j = i
+            jumped = False
             while True:
-                mm = -(j%m + 1)
-                nn = -(j/n + 1)
+                mm = -(j%m + 1); print(mm)
+                nn = -(j/m + 1); print(nn)
                 if mask[nn][mm]:
-                    j += 1
+                    j += 1; print(j)
+                    jumped = True
                 else:
                     out[nn][mm] = '*'
+                    if jumped:
+                        mask[nn][mm] = True
                     break
         for line in out:
             buffer.append(''.join(line))
-    elif n > 4 and m > 4:
-        buffer.append('larger')
 
 
 def logic(lines, buffer):
@@ -60,7 +69,6 @@ def main():
     with open(sys.argv[1]) as f:
         lines = f.readlines()
     logic(lines, buffer)
-    import pdb; pdb.set_trace()
     with open(sys.argv[2], 'w+') as f:
         for line in buffer:
             f.write('{}\n'.format(line))
