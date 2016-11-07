@@ -1,17 +1,23 @@
+Teszteset #0:
+c...
+....
+...*
 Teszteset #1:
-Lehetetlen!
+c...
+....
+..**
 Teszteset #2:
-c.*
-..*
-***
-Teszteset #3:
 Lehetetlen!
+Teszteset #3:
+c...
+....
+****
 Teszteset #4:
 Lehetetlen!
 Teszteset #5:
 c.........
-........**
-**********
+..........
+..********
 **********
 **********
 **********

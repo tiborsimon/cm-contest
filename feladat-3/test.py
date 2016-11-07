@@ -83,6 +83,46 @@ class BasicFunctionality(TestCase):
         result = decision(n, m, x)
         self.assertEquals(expected, result)
 
+    def test__case_3x3_2(self):
+        """
+        000
+        122
+        1**
+        """
+        n = 3
+        m = 3
+        x = 2
+        expected = False
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_3x3_3(self):
+        """
+        000
+        232
+        ***
+        """
+        n = 3
+        m = 3
+        x = 3
+        expected = True
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_3x3_4(self):
+        """
+        011
+        24*
+        ***
+        """
+        n = 3
+        m = 3
+        x = 4
+        expected = False
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+
     def test__case_3x3_5(self):
         """
         02*
@@ -145,6 +185,19 @@ class BasicFunctionality(TestCase):
         m = 4
         x = 5
         expected = False
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_4x7_24(self):
+        """
+        0011
+        233*
+        ****
+        """
+        n = 4
+        m = 7
+        x = 24
+        expected = True
         result = decision(n, m, x)
         self.assertEquals(expected, result)
 
