@@ -1,5 +1,6 @@
 from unittest import TestCase
-from main import step, special_step, parse_params
+from main import step, special_step, parse_params, calculate_steps
+
 
 class ParameterParsing(TestCase):
     def test__parameter_structure_can_be_parsed(self):
@@ -57,3 +58,10 @@ class SpecialStepFunctionality(TestCase):
         result = special_step(data)
         self.assertEquals(expected, result)
 
+
+class StepCalculation(TestCase):
+    def test__special_step_divides_biggest_element(self):
+        data = [2]
+        expected = 2
+        result = calculate_steps(data)
+        self.assertEquals(expected, result)

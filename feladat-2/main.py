@@ -12,7 +12,13 @@ def special_step(plates):
 
 
 def calculate_steps(plates):
-    return 42
+    i = 1
+    while True:
+        plates = step(plates)
+        if not sum(plates):
+            break
+        i += 1
+    return i
 
 
 def logic(params, buffer):
