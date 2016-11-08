@@ -1,1 +1,5 @@
-Feladat 1 logic..
+Teszteset #1: INSOMNIA
+Teszteset #2: 10
+Teszteset #3: 90
+Teszteset #4: 110
+Teszteset #5: 5076

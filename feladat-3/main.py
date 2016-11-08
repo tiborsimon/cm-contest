@@ -36,6 +36,9 @@ def paint(n, m, x, buffer):
             if i < threshold:
                 mm = -(i%m + 1)
                 nn = -(i/m + 1)
+                if x-i == 1 and -mm == m-1:
+                    nn -= 1
+                    mm = -1
             else:
                 j = i-threshold
                 nn = 1 - j%2
@@ -48,7 +51,7 @@ def paint(n, m, x, buffer):
 def logic(lines, buffer):
     for line in lines:
         n,m,x = [int(i) for i in line.split()]
-        buffer.append('Teszteset #{}:'.format(lines.index(line)))
+        buffer.append('Teszteset #{}:'.format(lines.index(line)+1))
         if decision(n, m, x):
             paint(n, m, x, buffer)
         else:
