@@ -190,9 +190,10 @@ class BasicFunctionality(TestCase):
 
     def test__case_4x7_24(self):
         """
-        0011
-        233*
-        ****
+        02*****
+        25*****
+        *******
+        *******
         """
         n = 4
         m = 7
@@ -201,3 +202,62 @@ class BasicFunctionality(TestCase):
         result = decision(n, m, x)
         self.assertEquals(expected, result)
 
+    def test__case_5x5_15(self):
+        """
+        00000
+        23332
+        *****
+        *****
+        *****
+        """
+        n = 5
+        m = 5
+        x = 15
+        expected = True
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_14(self):
+        """
+        00000
+        12332
+        3****
+        *****
+        *****
+        """
+        n = 5
+        m = 5
+        x = 14
+        expected = False
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_13(self):
+        """
+        00000
+        01232
+        24***
+        *****
+        *****
+        """
+        n = 5
+        m = 5
+        x = 13
+        expected = True
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_4(self):
+        """
+        00000
+        00000
+        00011
+        0124*
+        01***
+        """
+        n = 5
+        m = 5
+        x = 4
+        expected = True
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)

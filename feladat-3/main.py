@@ -6,10 +6,11 @@ def decision(n, m, x):
     if n > 2 and m > 2:
         full_rows =  get_full_rows(n, m, x)
         if full_rows < n-2:
-            if (m - x + full_rows*m) == 1:
+            if (m - x + full_rows*m) == 1 and x/m == n-3:
                 return False
-        if ((x-full_rows*m)%2) and x > m:
-            return False
+        if full_rows >= n-2:
+          if ((x-full_rows*m)%2) and x > m:
+              return False
         return n*m-4 >= x
     return False
 
@@ -40,8 +41,6 @@ def paint(n, m, x, buffer):
                 nn = 1 - j%2
                 mm = -1 * (j/2+1)
             out[nn][mm] = '*'
-
-
         for line in out:
             buffer.append(''.join(line))
 
