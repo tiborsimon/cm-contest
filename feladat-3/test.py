@@ -135,21 +135,6 @@ class BasicFunctionality(TestCase):
         result = decision(M, N, X)
         self.assertEquals(expected, result)
 
-    def test__case_5x5_16(self):
-        """
-        *****
-        *333*
-        *303*
-        *333*
-        *****
-        """
-        N = 5
-        M = 5
-        X = 16
-        expected = True
-        result = decision(M, N, X)
-        self.assertEquals(expected, result)
-
     def test__case_5x5_17(self):
         """
         *****
@@ -165,3 +150,107 @@ class BasicFunctionality(TestCase):
         result = decision(M, N, X)
         self.assertEquals(expected, result)
 
+    def test__case_5x5_16(self):
+        """
+        *****
+        *535*
+        *303*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 16
+        expected = True
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_15(self):
+        """
+        **2**
+        *424*
+        *303*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 16
+        expected = False
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_14(self):
+        """
+        **12*
+        *413*
+        *303*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 14
+        expected = False
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_13(self):
+        """
+        *202*
+        *203*
+        *303*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 13
+        expected = True
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_12(self):
+        """
+        1102*
+        *203*
+        *303*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 12
+        expected = False
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_11(self):
+        """
+        0002*
+        1103*
+        *203*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 12
+        expected = True
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)
+
+    def test__case_5x5_10(self):
+        """
+        0002*
+        1103*
+        *203*
+        *535*
+        *****
+        """
+        N = 5
+        M = 5
+        X = 12
+        expected = True
+        result = decision(M, N, X)
+        self.assertEquals(expected, result)

@@ -31,7 +31,7 @@ def paint(n, m, x, buffer):
         if n in (3, 4) or m in (3,4):
             out[0][0] = 'c'
         else:
-            out[1][1] = 'c'
+            out[2][2] = 'c'
         for i in range(x):
             print(i)
             j = i
