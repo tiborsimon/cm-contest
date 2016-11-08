@@ -1,8 +1,8 @@
-.PHONY: all f1 f2 f3 t2 t3 test
+.PHONY: all f1 f2 f3 t1 t2 t3 test
 
 run: f1 f2 f3
 
-test: t2 t3
+test: t1 t2 t3
 
 f1:
 	@echo '==============================='
@@ -46,14 +46,18 @@ f3:
 	@cat output-3.txt
 	@printf "\n\n"
 
+t1:
+	@echo 'TESTING FELADAT 1'
+	@cd feladat-1 && python -m unittest discover
+	@printf "\n\n"
+
 t2:
-	@echo '==============================='
-	@echo ' TESTING FELADAT 2'
-	@echo '==============================='
+	@echo 'TESTING FELADAT 2'
 	@cd feladat-2 && python -m unittest discover
+	@printf "\n\n"
 
 t3:
-	@echo '==============================='
-	@echo ' TESTING FELADAT 3'
-	@echo '==============================='
+	@echo 'TESTING FELADAT 3'
 	@cd feladat-3 && python -m unittest discover
+	@printf "\n\n"
+

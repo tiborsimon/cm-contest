@@ -1,5 +1,33 @@
 from unittest import TestCase
-from main import decision
+from main import parse_params, decision
+
+class ParameterParsing(TestCase):
+    def test__parameters_can_be_parsed(self):
+        data = [
+            '1\n',
+            '3 3 1\n'
+        ]
+        expected = [
+            [3, 3, 1]
+        ]
+        result = parse_params(data)
+        self.assertEquals(expected, result)
+
+    def test__multiple_cases(self):
+        data = [
+            '3\n',
+            '3 3 1\n',
+            '4 3 2\n',
+            '3 1 1\n'
+        ]
+        expected = [
+            [3, 3, 1],
+            [4, 3, 2],
+            [3, 1, 1]
+        ]
+        result = parse_params(data)
+        self.assertEquals(expected, result)
+
 
 class BasicFunctionality(TestCase):
     def test__simplest_case(self):

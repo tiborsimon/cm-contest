@@ -14,9 +14,11 @@ def decision(n, m, x):
         return n*m-4 >= x
     return False
 
+
 def get_full_rows(n, m, x):
     lines = x/m
     return lines - (lines -n+2) if lines > n-2 else lines
+
 
 def paint(n, m, x, buffer):
     if n == 1 or m == 1:
@@ -48,28 +50,37 @@ def paint(n, m, x, buffer):
             buffer.append(''.join(line))
 
 
-def logic(lines, buffer):
-    for line in lines:
-        n,m,x = [int(i) for i in line.split()]
-        buffer.append('Teszteset #{}:'.format(lines.index(line)+1))
+
+def logic(params, buffer):
+    for case in params:
+        n,m,x = case
+        buffer.append('Teszteset #{}:'.format(params.index(case)+1))
         if decision(n, m, x):
             paint(n, m, x, buffer)
         else:
             buffer.append('Lehetetlen!')
 
 
+def parse_params(lines):
+    params = []
+    for line in lines[1:int(lines[0])+1]:
+        params.append([int(i) for i in line.split()])
+    return params
+
+
 def main():
     buffer = []
     if 2 > len(sys.argv):
-        print("Input file parameter is mandatory!")
+        print("Input and output file name parameters are mandatory!")
         return
     with open(sys.argv[1]) as f:
         lines = f.readlines()
-        lines = lines[1:int(lines[0])+1]
-    logic(lines, buffer)
+    params = parse_params(lines)
+    logic(params, buffer)
     with open(sys.argv[2], 'w+') as f:
         for line in buffer:
             f.write('{}\n'.format(line))
+
 
 if __name__ == "__main__":
     main()
