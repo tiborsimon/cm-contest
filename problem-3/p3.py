@@ -1,6 +1,8 @@
 import sys
 
 def decision(n, m, x):
+    if x == n*m-1:
+        return True
     if n == 1 or m == 1:
         return n*m-2 >= x
     if n > 2 and m > 2:
@@ -21,8 +23,10 @@ def get_full_rows(n, m, x):
 
 
 def paint(n, m, x, buffer):
+    if x == n*m-1:
+        pass
     if n == 1 or m == 1:
-        out = 'c.' + '.'*(max(n,m)-2-x) + '*'*x
+        out = ('c.' if x < n*m-1 else 'c') + '.'*(max(n,m)-2-x) + '*'*x
         if m == 1:
             for c in out:
                 buffer.append(c)

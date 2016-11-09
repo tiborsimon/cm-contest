@@ -48,7 +48,7 @@ class BasicFunctionality(TestCase):
         n = 1
         m = 2
         x = 1
-        expected = False
+        expected = True
         result = decision(n, m, x)
         self.assertEquals(expected, result)
 
@@ -70,7 +70,7 @@ class BasicFunctionality(TestCase):
         n = 1
         m = 3
         x = 2
-        expected = False
+        expected = True
         result = decision(n, m, x)
         self.assertEquals(expected, result)
 
@@ -95,6 +95,18 @@ class BasicFunctionality(TestCase):
         m = 2
         x = 2
         expected = False
+        result = decision(n, m, x)
+        self.assertEquals(expected, result)
+
+    def test__case_2x2_3(self):
+        """
+        3*
+        **
+        """
+        n = 2
+        m = 2
+        x = 3
+        expected = True
         result = decision(n, m, x)
         self.assertEquals(expected, result)
 
