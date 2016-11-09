@@ -1,5 +1,5 @@
 from unittest import TestCase
-from main import step, special_step, parse_params, calculate_steps, finish
+from f2 import step, special_step, parse_params, calculate_steps, finish
 
 
 class ParameterParsing(TestCase):

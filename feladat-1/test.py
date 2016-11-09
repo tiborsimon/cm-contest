@@ -1,5 +1,5 @@
 from unittest import TestCase
-from main import parse_params
+from f1 import parse_params
 
 class ParameterParsing(TestCase):
     def test__parameter_parsing_case_1(self):
