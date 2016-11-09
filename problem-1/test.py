@@ -8,7 +8,10 @@ class ParameterParsing(TestCase):
             '1\n',
             '4\n',
         ]
-        expected = [1, 4]
+        expected = {
+            1: 1,
+            2: 4
+        }
         result = parse_params(data)
         self.assertEquals(expected, result)
 

@@ -13,15 +13,18 @@ def get_result(n):
 
 
 def logic(params, buffer):
-    for n in params:
+    for index in params:
+        n = params[index]
         result = 'INSOMNIA 'if n == 0 else get_result(n)
-        buffer.append('Teszteset #{}: {}'.format(params.index(n)+1, result))
+        buffer.append('Teszteset #{}: {}'.format(index, result))
 
 
 def parse_params(lines):
-    params = []
+    params = {}
+    index = 1
     for line in lines[1:int(lines[0])+1]:
-        params.append(int(line))
+        params[index] = int(line)
+        index += 1
     return params
 
 

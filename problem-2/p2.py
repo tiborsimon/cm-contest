@@ -34,15 +34,17 @@ def calculate_steps(plates):
 
 
 def logic(params, buffer):
-    for plates in params:
-        steps = calculate_steps(plates)
-        buffer.append('Teszteset #{}: {}'.format(params.index(plates)+1, steps))
+    for index in params:
+        steps = calculate_steps(params[index])
+        buffer.append('Teszteset #{}: {}'.format(index, steps))
 
 
 def parse_params(lines):
-    params = []
+    params = {}
+    index = 1
     for line in lines[2:int(lines[0])*2+1:2]:
-        params.append(sorted([int(p) for p in line.split()]))
+        params[index] = sorted([int(p) for p in line.split()])
+        index += 1
     return params
 
 

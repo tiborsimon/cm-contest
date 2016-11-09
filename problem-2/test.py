@@ -11,10 +11,10 @@ class ParameterParsing(TestCase):
             '2\n',
             '1 2\n'
         ]
-        expected = [
-            [4],
-            [1, 2]
-        ]
+        expected = {
+            1: [4],
+            2: [1, 2]
+        }
         result = parse_params(data)
         self.assertEquals(expected, result)
 
@@ -24,9 +24,9 @@ class ParameterParsing(TestCase):
             '4\n',
             '3 1 4 2\n'
         ]
-        expected = [
-            [1, 2, 3, 4]
-        ]
+        expected = {
+            1: [1, 2, 3, 4]
+        }
         result = parse_params(data)
         self.assertEquals(expected, result)
 

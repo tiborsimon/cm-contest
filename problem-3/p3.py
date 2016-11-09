@@ -52,9 +52,9 @@ def paint(n, m, x, buffer):
 
 
 def logic(params, buffer):
-    for case in params:
-        n,m,x = case
-        buffer.append('Teszteset #{}:'.format(params.index(case)+1))
+    for index in params:
+        n,m,x = params[index]
+        buffer.append('Teszteset #{}:'.format(index))
         if decision(n, m, x):
             paint(n, m, x, buffer)
         else:
@@ -62,9 +62,11 @@ def logic(params, buffer):
 
 
 def parse_params(lines):
-    params = []
+    params = {}
+    index = 1
     for line in lines[1:int(lines[0])+1]:
-        params.append([int(i) for i in line.split()])
+        params[index] = [int(i) for i in line.split()]
+        index += 1
     return params
 
 

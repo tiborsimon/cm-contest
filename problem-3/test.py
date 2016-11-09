@@ -7,9 +7,9 @@ class ParameterParsing(TestCase):
             '1\n',
             '3 3 1\n'
         ]
-        expected = [
-            [3, 3, 1]
-        ]
+        expected = {
+            1: [3, 3, 1]
+        }
         result = parse_params(data)
         self.assertEquals(expected, result)
 
@@ -20,11 +20,11 @@ class ParameterParsing(TestCase):
             '4 3 2\n',
             '3 1 1\n'
         ]
-        expected = [
-            [3, 3, 1],
-            [4, 3, 2],
-            [3, 1, 1]
-        ]
+        expected = {
+            1: [3, 3, 1],
+            2: [4, 3, 2],
+            3: [3, 1, 1]
+        }
         result = parse_params(data)
         self.assertEquals(expected, result)
 
