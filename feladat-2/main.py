@@ -11,11 +11,23 @@ def special_step(plates):
     return sorted(plates)
 
 
+def finish(plates):
+    for p in plates:
+        if not sum(p):
+            return True
+    return False
+
+
 def calculate_steps(plates):
     i = 1
+    vector = [plates]
     while True:
-        plates = step(plates)
-        if not sum(plates):
+        temp = []
+        for plates in vector:
+            temp.append(step(plates))
+            temp.append(special_step(plates))
+        vector = temp
+        if finish(vector):
             break
         i += 1
     return i

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from main import step, special_step, parse_params, calculate_steps
+from main import step, special_step, parse_params, calculate_steps, finish
 
 
 class ParameterParsing(TestCase):
@@ -39,6 +39,16 @@ class StepFunctionality(TestCase):
         self.assertEquals(expected, result)
 
 
+class FinishDecision(TestCase):
+    def test__all_zero_plate_set__returns_true(self):
+        data = [
+            [0, 0]
+        ]
+        expected = True
+        result = finish(data)
+        self.assertEquals(expected, result)
+
+
 class SpecialStepFunctionality(TestCase):
     def test__special_step_divides_biggest_element(self):
         data = [2]
@@ -63,5 +73,11 @@ class StepCalculation(TestCase):
     def test__special_step_divides_biggest_element(self):
         data = [2]
         expected = 2
+        result = calculate_steps(data)
+        self.assertEquals(expected, result)
+
+    def test__consider_special_steps(self):
+        data = [4]
+        expected = 3
         result = calculate_steps(data)
         self.assertEquals(expected, result)
