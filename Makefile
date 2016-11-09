@@ -1,7 +1,7 @@
 YELLOW := $(shell tput setaf 3)
 RESET:= $(shell tput sgr0)
 
-.PHONY: all f1 f2 f3 t1 t2 t3 test
+.PHONY: run f1 f2 f3 t1 t2 t3 test
 
 run: f1 f2 f3
 
@@ -35,17 +35,17 @@ f3:
 	@printf "\n\n"
 
 t1:
-	@echo 'TESTING FELADAT 1'
+	@echo "$(YELLOW)FELADAT 1$(RESET)"
 	@cd feladat-1 && python -m unittest discover
 	@printf "\n\n"
 
 t2:
-	@echo 'TESTING FELADAT 2'
+	@echo "$(YELLOW)FELADAT 2$(RESET)"
 	@cd feladat-2 && python -m unittest discover
 	@printf "\n\n"
 
 t3:
-	@echo 'TESTING FELADAT 3'
+	@echo "$(YELLOW)FELADAT 3$(RESET)"
 	@cd feladat-3 && python -m unittest discover
 	@printf "\n\n"
 
