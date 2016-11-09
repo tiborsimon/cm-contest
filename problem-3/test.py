@@ -1,5 +1,5 @@
 from unittest import TestCase
-from f3 import parse_params, decision
+from p3 import parse_params, decision
 
 class ParameterParsing(TestCase):
     def test__parameters_can_be_parsed(self):
